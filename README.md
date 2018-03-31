@@ -10,9 +10,12 @@
 
 
 
+#####This project uses the gradle wrapper to alleviate the need for every developer to download, unzip and map the GRADLE_HOME environment variable as well as add $GRADLE_HOME/bin to your PATH variable
 
-This project uses the gradle wrapper to allieviate the need for every developer to download, unzip and map the GRADLE_HOME environment variable as well as add $GRADLE_HOME/bin to your PATH variable
-###How to run this project
+####How to run this project
 gradlew bootRun
+
+####How to test this projecct
+gradlew test
 
 
