@@ -23,10 +23,12 @@ gradlew flywayMigrate -i
 gradlew bootRun
 ```
 
-###How to test this projecct
+###How to run integration tests
 ```
-gradlew test
+gradlew clean test
 ```
 
-###To view the H2 database
-[H2 Console!](http://localhost:8080/git-workflow/console)
+###Test reports are found here
+```
+${buildDir}\reports\tests\test\index.html
+```
