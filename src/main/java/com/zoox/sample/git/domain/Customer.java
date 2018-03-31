@@ -1,17 +1,22 @@
-// tag::sample[]
-package hello;
+package com.zoox.sample.git.domain;
+
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Slf4j
+@Getter
 @Entity
 public class Customer {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+
     private String firstName;
     private String lastName;
 
@@ -26,21 +31,8 @@ public class Customer {
     public String toString() {
         return String.format(
                 "Customer[id=%d, firstName='%s', lastName='%s']",
-                id, firstName, lastName);
+                getId(), getFirstName(), getLastName());
     }
 
-// end::sample[]
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
 }
 

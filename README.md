@@ -7,3 +7,12 @@
 * To understand using the master branch as an implied "approved" commit by any given developer
 * To understand how to use rebase to ensure the branch you are working will always be up to date with the master branch
 * To grasp a solid understanding of keeping code environment ignorant
+
+
+
+
+This project uses the gradle wrapper to allieviate the need for every developer to download, unzip and map the GRADLE_HOME environment variable as well as add $GRADLE_HOME/bin to your PATH variable
+###How to run this project
+gradlew bootRun
+
+

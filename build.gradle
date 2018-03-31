@@ -3,19 +3,24 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
+apply(plugin: "java")
+apply(plugin: "org.springframework.boot")
+apply(plugin: "io.spring.dependency-management")
 
 bootJar {
-    baseName = 'gs-accessing-data-jpa'
-    version =  '0.1.0'
+    baseName = "git-workflow-project"
+    version =  "0.1.0-SNAPSHOT"
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("io.spring.platform:platform-bom:$springPlatformVersion")
+        mavenBom("org.springframework.boot:spring-boot-starter-parent:$springBootVersion")
+    }
 }
 
 repositories {
@@ -26,9 +31,34 @@ repositories {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+/**
+ * I prefer using double quotes in all gradle files. I do this because
+ * if you use any variables in them, such as $springBootVersion or something
+ * you need double quotes for the compiler to recognize them. So to alleviate
+ * any potential time wasters, I always use double quotes and never have this issue
+ *
+ * I also prefer the syntax I have chosen below because for one it is more aligned
+ * with the DRY principle and for two it does end up being easier to read in the end.
+ *
+ * I do realize the bad thing about this is that mvnrepository.com and other maven repositories
+ * do not normally offer this syntax at all so when you copy and paste you do need to
+ * sanitize it
+ *
+ */
+
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile("com.h2database:h2")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
+    compile(
+            ["org.springframework:spring-core"],
+            ["org.springframework.boot:spring-boot-starter-data-jpa"],
+            ["com.h2database:h2"]
+    )
+
+    compileOnly(
+            ["org.projectlombok:lombok:$lombokVersion"]
+    )
+
+    testCompile(
+            ["org.springframework.boot:spring-boot-starter-test"]
+    )
 }
 
