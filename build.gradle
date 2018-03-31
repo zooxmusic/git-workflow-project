@@ -62,3 +62,12 @@ dependencies {
     )
 }
 
+
+/* A custom task to print the current active profile in spring */
+task activeProfile {
+    doFirst {
+        println(System.getenv("SPRING_PROFILES_ACTIVE"))
+    }
+}
+
+
